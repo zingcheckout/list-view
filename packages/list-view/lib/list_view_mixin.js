@@ -553,7 +553,7 @@ Ember.ListViewMixin = Ember.Mixin.create({
 
     scrollTop = get(this, 'scrollTop');
     contentLength = get(this, 'content.length');
-    maxContentIndex = max(contentLength - 1, 0);
+    maxContentIndex = max(contentLength, 0);
     childViews = get(this, 'listItemViews');
     childViewsLength =  childViews.length;
 
@@ -564,7 +564,7 @@ Ember.ListViewMixin = Ember.Mixin.create({
 
     this.trigger('scrollContentTo', scrollTop);
 
-    contentIndexEnd = min(visibleEndingIndex, startingIndex + childViewsLength);
+    contentIndexEnd = min(endingIndex, startingIndex + childViewsLength);
 
     for (contentIndex = startingIndex; contentIndex < contentIndexEnd; contentIndex++) {
       childView = childViews[contentIndex % childViewsLength];
